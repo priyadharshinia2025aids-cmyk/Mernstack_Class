@@ -25,7 +25,7 @@ export default App;
 submit not reload
 --------------------------------------------------------------------------------
 
-*/
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -71,9 +71,9 @@ function handlechange(e){
 export default App;
 
 
+*/
 
 
-/*
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Login from "./pages/login";
 import Projects from "./pages/projects";
@@ -83,6 +83,7 @@ import Clients from "./pages/clients";
 import Dashboard from "./pages/dashboard";
 import Calender from "./pages/calender";
 import Settings from "./pages/settings";
+import Register from "./pages/register";
 
 function App() {
   return ( 
@@ -96,6 +97,7 @@ function App() {
         <Route path = "/dashboard" element = {<Dashboard/>}/>
         <Route path = "/calender" element = {<Calender/>}/>
         <Route path = "/settings" element = {<Settings/>}/>
+        <Route path = "register" element = {<Register/>}/>
 
 
 
@@ -105,4 +107,4 @@ function App() {
 }
 
 export default App;
-*/
+
