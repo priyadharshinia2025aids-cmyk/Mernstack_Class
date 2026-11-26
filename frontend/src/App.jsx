@@ -59,8 +59,9 @@ function handlechange(e){
     <>
       <form onSubmit={handlesubmit}>
         <input type="text" required placeholder="Enter your email" name="username" onChange={handlechange}/>
-        <input  type="password"  required placeholder="Enter your password" name="password" onChange={handlechange} />
-        <button type="submit">Submit</button>
+        <input  type="password''"  required placeholder="Enter your password" name="password" onChange={handlechange} />
+        <button type="submit.
+        ">Submit</button>
       </form>
     </>
   );
