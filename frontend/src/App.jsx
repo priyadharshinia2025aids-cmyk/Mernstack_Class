@@ -25,34 +25,54 @@ export default App;
 submit not reload
 --------------------------------------------------------------------------------
 
-
+*/
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function App() {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const handleSubmit = (e) => {
+  const [formdata, setFormdata] = useState({
+    username:" ",
+    password:" "
+  })
+  const navigate = useNavigate();
+
+
+function handlechange(e){
+  e.preventDefault();
+  setFormdata({
+    ...formdata,
+    [e.target.name]:e.target.value
+  })
+}
+  const handlesubmit=(e)=>{
     e.preventDefault();
-    console.log(email, pass);
-  };
+    console.log(formdata.username);
+    console.log(formdata.password);
+    alert("Login Successfully");
+    navigate("/dashboard",{
+      state:formdata
+    })
+  }
+
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <input  type="password" placeholder="Enter your password" value={pass} onChange={(e) => setPass(e.target.value)} />
+      <form onSubmit={handlesubmit}>
+        <input type="text" required placeholder="Enter your email" name="username" onChange={handlechange}/>
+        <input  type="password"  required placeholder="Enter your password" name="password" onChange={handlechange} />
         <button type="submit">Submit</button>
       </form>
     </>
   );
 }
 
+
 export default App;
-*/
 
 
 
 
+/*
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Login from "./pages/login";
 import Projects from "./pages/projects";
@@ -84,4 +104,4 @@ function App() {
 }
 
 export default App;
-
+*/
