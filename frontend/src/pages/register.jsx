@@ -71,7 +71,7 @@ function Register() {
                 </p>
             <form onSubmit={handleSubmit(onSubmit1)}>
                 <div>
-                    <label className="block text-gray-700 font-semibold mb-2">Name</label>
+                    <label className="block text-gray-600 font-semibold mb-2">Name</label>
                     <input type="text" placeholder="Enter your name" {...register("name")} className="w-full px-4 py-3 border border-gray-100 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"/>
                     <p className="text-red-500 text-sm mt-1">{errors.name?.message}</p>
                 </div>
