@@ -84,6 +84,10 @@ import Dashboard from "./pages/dashboard";
 import Calender from "./pages/calender";
 import Settings from "./pages/settings";
 import Register from "./pages/register";
+import Admin from "./pages/Admin/adminlayout";
+import AdminUserdetails from "./pages/Admin/userdetails";
+import AdminDashboard from "./pages/Admin/dashboard";
+import AdminSettings from "./pages/Admin/settings";
 
 function App() {
   return ( 
@@ -98,6 +102,13 @@ function App() {
         <Route path = "/calender" element = {<Calender/>}/>
         <Route path = "/settings" element = {<Settings/>}/>
         <Route path = "register" element = {<Register/>}/>
+        <Route path = "admin" element = {<Admin/>}>
+          <Route path = "admin_dashboard" element = {<AdminDashboard/>}/>
+          <Route path = "userdetails" element = {<AdminUserdetails/>}/>
+          <Route path = "AdminSettings" element = {<AdminSettings/>}/>
+
+          
+        </Route>
 
 
 

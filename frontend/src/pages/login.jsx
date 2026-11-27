@@ -1,75 +1,64 @@
-/*
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const handleSubmit = (e) => {
+  {/*const[email,setEmail] = useState('');
+  const[pass,setPass]= useState('');*/}
+  const location = useLocation();
+  const registerdata = location.state;
+  const navigate = useNavigate();
+  const[logindata,setlogindata]=useState({
+    username:"",
+    password:""
+  })
+  function handlesubmit(e){
     e.preventDefault();
-    console.log(email, pass);
-  };
+     console.log("Login page",logindata)
+     const registerdata=location.state
+     console.log("Register", registerdata)
+     if(logindata.username===registerdata.name && logindata.password===registerdata.password){
+      console.log("if success")
+      navigate("/dashboard",{
+        state:logindata
+      });
 
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <input  type="password" placeholder="Enter your password" value={pass} onChange={(e) => setPass(e.target.value)} />
-        <button type="submit">Submit</button>
-      </form>
-    </>
-  );
-}
-
-export default Login;
-*/
-
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-function Login() {
-  
-  //const[password,setPassword]=useState("");
-  //const[email,setEmail]=useState("");
-  const[formdata,setFormdata]=useState({username:"",password:""})  
-  const navigate=useNavigate();
-  function formdisplay(e)
-  {
-   e.preventDefault();
-   setFormdata({
-      ...formdata,
-      [e.target.name]:[e.target.value]
-   })
-
-}
-  const print=(e)=>
-  {
-     e.preventDefault()
-     console.log(formdata.username,formdata.password);
-     alert("Log in successfull");
-     navigate("/dashboard",
-      {state:formdata}
-     )
+     }else{
+      console.log("Inpust must valid");
+     }
+     
   }
-  return ( 
-       
-      <form onSubmit={print}>
-         {/*<h4>Enter Password:</h4>
-         <input type="password" placeholder="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-         <br/>
-         <h4>Enter Email:</h4>
-         <input type="Email" placeholder="mail" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>*/}
-        {/* <button type="submit" onClick={()=>{console.log(email,password)}}>Submit</button>
-        */}
-        <h4>Username:</h4>
-        <input type="text" placeholder="enter the username" name="username" onChange={formdisplay}/>
-        <br/>
-        <h4>Password:</h4>
-        <input type="password" placeholder="enter the password" name="password" onChange={formdisplay}/>
-        <button type="submit">Submit</button>
-      </form>
-    
-      
-     );
+  function handlechange(e){
+    e.preventDefault()
+    setlogindata({
+      ...logindata,
+      [e.target.name]:e.target.value
+  });
+  }
+  return (
+    <div>
+
+     <form onSubmit={handlesubmit}>
+       <input
+        type="text"
+        required
+        placeholder="Enter your username"
+        name="username"
+        onChange={handlechange}
+      />
+
+      <input
+        type="password"
+        required
+        placeholder="Enter your password"
+        name="password"
+        onChange={handlechange}
+        
+      />
+      <button type="submit" >Submit</button>
+     </form>
+    </div>
+  );
 }
 
 export default Login;
