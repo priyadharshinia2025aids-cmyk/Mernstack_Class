@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import API from "../components/formSchema/api";
 
 function Dashboard() {
     const location = useLocation();
@@ -13,10 +14,15 @@ function Dashboard() {
         setUserdata(count+1);
     },[])
     console.log(count)
+
+    const checkendpoint = async() => {
+        const response = await API.get("/api/get");
+        console.log(response.data);
+    }
     return ( 
         <div>
             <>{userdata.username} {userdata.password}</>
-            <button onClick={displaydata}> Button</button>
+            <button onClick={checkendpoint}> Button</button>
         </div>
      );
 }
