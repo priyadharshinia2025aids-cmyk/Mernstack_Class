@@ -16,7 +16,7 @@ function Dashboard() {
     return ( 
         <div>
             <>{userdata.username} {userdata.password}</>
-            <button onClick={displaydata}> button</button>
+            <button onClick={displaydata}> Button</button>
         </div>
      );
 }
